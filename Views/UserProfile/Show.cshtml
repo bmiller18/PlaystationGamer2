@@ -1,0 +1,50 @@
+﻿@model PlaystationGamer2.Models.Users
+
+@{
+    ViewData["Title"] = "UserInfo";
+}
+
+<h2>Show</h2>
+
+<div>
+    <h4>PlaystationGamer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <img src="\userPhotos\@Html.DisplayFor(model => model.PhotoPath)" width="200" height="200" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAccountId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserAccountId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Browse">Back to Browse</a>
+</div>

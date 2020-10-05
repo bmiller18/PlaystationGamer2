@@ -1,0 +1,33 @@
+﻿@model PlaystationGamer2.Models.Blog
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Create Blog</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BlogTitle" class="control-label"></label>
+                <input asp-for="BlogTitle" class="form-control" />
+                <span asp-validation-for="BlogTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost" class="control-label"></label>
+                <input asp-for="BlogPost" class="form-control" />
+                <span asp-validation-for="BlogPost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogDate" class="control-label"></label>
+                <input asp-for="BlogDate" class="form-control" />
+                <span asp-validation-for="BlogDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post Blog" class"btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

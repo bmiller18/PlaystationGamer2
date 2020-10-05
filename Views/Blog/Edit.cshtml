@@ -1,0 +1,34 @@
+﻿@model PlaystationGamer2.Models.Blog
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_Layout";
+}
+
+<h2>Edit Blog</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div class="form-group">
+                <label asp-for="BlogTitle" class="control-label"></label>
+                <input asp-for="BlogTitle" class="form-control" />
+                <span asp-validation-for="BlogTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost" class="control-label"></label>
+                <input asp-for="BlogPost" class="form-control" />
+                <span asp-validation-for="BlogPost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogDate" class="control-label"></label>
+                <input asp-for="BlogDate" class="form-control" />
+                <span asp-validation-for="BlogDate" class="text-danger"></span>
+            </div>
+            @Html.HiddenFor(m => m.BlogId)
+            <div class="form-group">
+                <input type="submit" value="Update Blog" class"btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PlaystationGamer2.Models.Blog>
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<p>
+
+</p>
+
+@foreach (var item in Model)
+{
+    <div>
+        <a asp-controller="Blog" asp-action="Details" asp-route-id="@item.BlogId">@Html.DisplayFor(m => item.BlogTitle)</a>
+        <p>@Html.DisplayFor(m => item.BlogDate)</p>
+    </div>
+}
+<hr />
+<div>
+    <a asp-action="New">Create Blog</a>
+</div>

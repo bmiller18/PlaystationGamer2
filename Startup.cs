@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using PlaystationGamer2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PlaystationGamer2.Models;
 
 namespace PlaystationGamer2
 {
@@ -34,17 +35,23 @@ namespace PlaystationGamer2
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<PlaystationGamerContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("PlaystationGamer")));
+            services.AddDbContext<SecurityContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("PlaystationGamer")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<SecurityContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +76,9 @@ namespace PlaystationGamer2
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SetupSecurity.SeedRoles(roleManager);
+            SetupSecurity.SeedUsers(userManager);
         }
     }
 }

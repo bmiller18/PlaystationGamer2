@@ -1,0 +1,18 @@
+﻿@model PlaystationGamer2.Models.Blog
+
+@{ 
+    Layout = "_Layout";
+}
+
+<h2>Blog</h2>
+
+<p>@Model.BlogTitle </p>
+<p>@Model.BlogPost</p>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.BlogId">Edit this Blog</a>
+</p>
+<hr />
+<p>
+    <a asp-action="Delete" asp-route-id="@Model.BlogId">Delete this Blog</a>
+</p>
