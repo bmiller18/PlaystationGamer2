@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DbSetup\" />
     <Folder Include="wwwroot\userPhotos\" />
   </ItemGroup>
 
